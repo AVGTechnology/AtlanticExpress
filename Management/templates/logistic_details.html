@@ -1,0 +1,147 @@
+{% extends "base.html"%}
+{% block content %}
+{% load static %}
+
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Jen Photo Masters</h5>
+            <span class="text-muted">Online Management.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light text-dark shadow p-3 mb-0 ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+</div>
+<div class="row">
+    <!-- side navbar-->
+    <div class=" p-3 mb-5 bg-dark text-white " style="width: 20rem; height: 100rem;">
+        <div class="card-title">
+
+            <a href="{% url 'dashboard' %}">
+                <h4 align="center"><font color="white">Dashboard</font></h4>
+            </a>
+            <div class="card-body">
+                <h6><font color="white">Admin</font></h6>
+                <a href="/admin">
+                <h5><img src="{% static 'images/admin.png' %}" alt="+" width="30" height="30">
+                    <font color="grey">Admin database</font></h5>
+                </a>
+                <hr color="white">
+
+                <h6><font color="white">Main</font></h6>
+                <a href="/admin/Management/logistic/add/">
+                <h5><img src="{% static 'images/add-log.png' %}" alt="+" width="30" height="30">
+                    <font color="grey"> New Logistics</font></h5>
+                </a>
+                 <a href="/admin/Management/paymentaccount/add/">
+                <h5><img src="{% static 'images/add-bank.png' %}" alt="+" width="30" height="30">
+                    <font color="grey">PaymentAccount</font></h5>
+                </a>
+                <hr color="white">
+                <h6><font color="white">Manage Logistics</font></h6>
+                <a href="{% url 'logistic_list'%}">
+                    <h5><img src="{% static 'images/log.png' %}" alt="+" width="30" height="30">
+                        <font color="grey">Logistics</font></h5>
+                </a>
+
+
+                <hr color="white">
+                <h6><font color="white">Account</font></h6>
+
+                <a href="/admin/logout/">
+                <p><font color="grey">Logout</font></p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col">
+
+        <div class="container mt-5">
+            <table class="table table-borderless bg-light">
+
+                <tbody>
+                <tr>
+                    <td>
+                        <b>Waybill: {{ logistics.trackId }} </b> <br>
+
+                        <b>Sender:<i class="text-primary"> {{ logistics.sender }} </i></b><br>
+                        <b>Email:<i class="text-danger"> {{ logistics.sender_email}} </i> </b><br>
+                        <b>Mode of transit: {{ logistics.mode }}</b><br><br>
+
+                          <a href="{% url 'location_form' logistics.trackId %}">
+                             <button type="button" class="btn btn-danger">Update location</button>
+                          </a>
+
+                    </td>
+                    <td>
+                        <b>{{ logistics.date }} at {{ logistics.timestap }} </b> <br>
+                        <b> Origin Service Area: </b><br>
+                        <h6><b class="text-danger"> ></b>{{ logistics.origin }} </h6>
+
+                        <b>Destination Service Area:</b><br>
+                        <h6><b class="text-danger"> ></b>{{ logistics.destination }}</h6>
+                    </td>
+                    <td>
+                        <b>Estimated Delivery Date: </b> <br>
+                        <b> {{ logistics.delivery_date }} </b><br>
+                        <h6> By End of Day </h6>
+
+                        <b>Recipient:<i class="text-primary"> {{ logistics.recipient }} </i></b><br>
+                        <b>Email:<i class="text-danger"> {{ logistics.recipient_email}}</i> </b><br><br>
+
+                        <a href="{% url 'bill_form' logistics.trackId %}">
+                             <button type="button" class="btn btn-primary">Bill Recipient</button>
+                         </a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            {% if location %}
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Clearance Event</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for location in location %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <!-- Events-->
+                    <td>{{ location.point }}</td>
+                    <!-- Location-->
+                    <td>{{ location.Location }}</td>
+                    <!-- Date-->
+                    <td>{{ location.date|date:"D d M Y" }}</td>
+                    <!-- Time-->
+                    <td>{{ location.timestap }}</td>
+                </tr>
+                <tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+            <h4>No Location Update yet</h4>
+
+
+            {% endif %}
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

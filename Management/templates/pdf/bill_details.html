@@ -1,0 +1,55 @@
+{% load static %}
+
+<div align="center" style=" align:center; font-family:Arial, Helvetica, sans-serif; font-size:12px; background-color:#ededed; width:100%;
+      height:100%;"><br>
+    <div style=" font-size:24px; color:#000000;">
+        <img src=" https://www.pngkey.com/png/full/26-266746_download-atlantic-aviation-logo.png " alt="Atlantic"
+             width="80" height="50">
+        <h5 align="center">Atlantic Global Express <br> Delivery Service </h5>
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2020/08/28/14/45/courier-5524778__340.png " alt="Atlantic"
+         width="150" height="150">
+    <h4 style=" font-size:24px; color:#666666;">{{ billLog.recipient }} This is Your Bill Details  <br>
+        </h4>
+    <hr>
+        <h5 style=" font-size:24px; color:#01091a;">Waybill: {{ billLog.trackId }}</h5>
+
+    <div align="center">
+            <h5 style=" font-size:24px; color:#01091a;">Package Location:</h5>
+            <table style=" font-size:24px; color:#01091a;">
+                <thead>
+                <tr>
+                    <th scope="col">Clearance Event</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <!-- Events-->
+                    <td>{{ location.point }}</td>
+                    <!-- Location-->
+                    <td>{{ location.Location }}</td>
+                    <!-- Date-->
+                    <td>{{ location.date|date:"D d M Y" }}</td>
+                    <!-- Time-->
+                    <td>{{ location.timestap }}</td>
+                </tr>
+                <tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <h5 style=" font-size:24px; color:#01091a;"><b>Bill Description </b><br>{{ bill.bill_dis }}<br>
+            <b style=" font-size:26px; color:#0d56de;">Total Bill: {{ bill.Amount }}</b></h5>
+        <h6 style=" font-size:24px; color:#db1507;">Note: payment should made before the delivery date ({{ billLog.delivery_date }})</h6>
+        <hr>
+
+        <h5 style=" font-size:24px; color:#01091a;">Payment Method: Mobile Transfer
+          Payment should be made to the account below<br>
+            <b style=" font-size:24px; color:#000000;">[ <b style=" font-size:24px; color:#0d56de;">{{ bill.account }} </b>]</b></h5>
+        <br>
+        <h6 >Atlantic Global Express Delivery Bill </h6>
+
+    </div>

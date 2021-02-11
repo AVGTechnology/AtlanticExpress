@@ -1,0 +1,208 @@
+{% extends "base.html"%}
+{% block content %}
+{% load static %}
+
+         <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h5 class="text-white h4"> <b>Atlantic</b> Global Express</h5>
+                    <span class="text-muted">Online Management.</span>
+                </div>
+            </div>
+            <nav class="navbar navbar-light bg-light text-dark shadow p-3 mb-0 ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+<div class="row">
+ <!-- side navbar-->
+    <div class=" p-3 mb-5 bg-dark text-white " style="width: 20rem; height: 100rem;">
+        <div class="card-title">
+
+            <a href="{% url 'dashboard' %}">
+            <h4 align="center"><font color="white">Dashboard</font></h4>
+            </a>
+            <div class="card-body">
+                <h6><font color="white">Admin</font></h6>
+                <a href="/admin">
+                <h5><img src="{% static 'images/admin.png' %}" alt="+" width="30" height="30">
+                    <font color="grey">Admin database</font></h5>
+                </a>
+                <hr color="white">
+
+                <h6><font color="white">Main</font></h6>
+                <a href="/admin/Management/logistic/add/">
+                <h5><img src="{% static 'images/add-log.png' %}" alt="+" width="30" height="30">
+                    <font color="grey"> New Logistics</font></h5>
+                </a>
+                 <a href="/admin/Management/paymentaccount/add/">
+                <h5><img src="{% static 'images/add-bank.png' %}" alt="+" width="30" height="30">
+                    <font color="grey">PaymentAccount</font></h5>
+                </a>
+                <hr color="white">
+                <h6><font color="white">Manage Logistics</font></h6>
+                <a href="{% url 'logistic_list'%}">
+                    <h5><img src="{% static 'images/log.png' %}" alt="+" width="30" height="30">
+                        <font color="grey">Logistics</font></h5>
+                </a>
+
+
+                <hr color="white">
+                <h6><font color="white">Account</font></h6>
+
+                <a href="/admin/logout/">
+                <p><font color="grey">Logout</font></p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col">
+
+            <div class="container mt-5">
+
+                <div class="ml-0">
+                    <a class="navbar-brand head ml-0" href="#">
+                        <img src="{% static 'images/logo2.png' %}" alt="Atlantic" width="100" height="50">
+                        <b>Atlantic</b> Global Express
+
+                    </a>
+                </div>
+
+                <h6>Hello,welcome {{user}}</h6>
+                <div class="row">
+                    <div class="col">
+                        <div class="shadow p-3 mb-5 bg-white rounded mt-5" style="width: 14rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <a href="{% url 'logistic_list' %}">
+                                        <img src="{% static 'images/log.png' %}" alt="Atlantic" width="50" height="50">
+                                    </a>
+                                    <div class="col">
+                                         {% if logistics %}
+                                        <h2 align="center"><font color="black">{{logistics.count}}</font></h2>
+                                        {% else %}
+                                        <h2 align="center"><font color="black"> 0 </font></h2>
+                                        {% endif %}
+                                        <h4 align="center"><font color="gray">All Logistics</font></h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="shadow p-3 mb-5 bg-white rounded mt-5" style="width: 14rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <a href="/admin/Management/paymentaccount/">
+                                        <img src="{% static 'images/pay.png' %}" alt="Atlantic" width="50" height="50">
+                                    </a>
+                                    <div class="col">
+
+                                         {% if pay_acc %}
+                                        <h2 align="center"><font color="black">{{pay_acc.count}}</font></h2>
+                                        {% else %}
+                                        <h2 align="center"><font color="black"> 0 </font></h2>
+                                        {% endif %}
+                                        <h5 align="center"><font color="gray">Payments Account</font></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+                        <div class="shadow p-3 mb-5 bg-white rounded mt-5" style="width: 14rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <a href="{% url 'bill_client' %}">
+                                        <img src="{% static 'images/billed.png' %}" alt="Atlantic" width="50" height="50">
+                                    </a>
+                                    <div class="col">
+                                         {% if billed_client %}
+                                        <h2 align="center"><font color="black">{{billed_client.count}}</font></h2>
+                                        {% else %}
+                                        <h2 align="center"><font color="black"> 0 </font></h2>
+                                        {% endif %}
+                                        <h4><font color="gray">Billed Client</font></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="shadow p-3 mb-5 bg-white rounded mt-5" style="width: 14rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <a href="{% url 'invoices' %}">
+                                        <img alt="..." src="{% static 'images/invoices.png' %}" width="40" height="40">
+                                    </a>
+                                    <div class="col">
+                                       {% if logistics %}
+                                        <h2 align="center"><font color="black">{{logistics.count}}</font></h2>
+                                        {% else %}
+                                        <h2 align="center"><font color="black"> 0 </font></h2>
+                                        {% endif %}
+                                         <h4><font color="gray">Invoice</font></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                      <div class="row">
+                        <div class="col">
+                        <div class="shadow p-3 mb-5 bg-white rounded mt-5" style="width: 18rem;">
+                        <div class="card-title">
+                            <h5>New Logistics</h5>
+                        </div>
+                        {%for new_logistics in new_logistics%}
+                        <div class="card-body">
+                            <h6 class="text-danger">Waybill - {{new_logistics.trackId}}</h6>
+                            <h6>Sender: {{new_logistics.sender}}</h6>
+                            <h6>Recipient: {{new_logistics.recipient}}</h6>
+                            <a href="{% url 'logistic_details' new_logistics.trackId %}">
+                            <button type="button" class="btn btn-success">Details</button>
+                             </a>
+                            <p><font color="gray">{{new_logistics.date}} at {{new_logistics.timestap}}</font></p>
+                            <hr color="gray">
+                        </div>
+                        {%endfor%}
+                    </div>
+                  </div>
+
+
+                        <div class="col">
+                        <div class="shadow p-3 mb-5 bg-white rounded mt-5" style="width: 18rem;">
+                        <div class="card-title">
+                        <img src="{% static 'images/urban.png' %}" alt="Atlantic" width="300" height="200">
+
+
+                    </div>
+                  </div>
+                      </div>
+
+
+
+                </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+         </div>
+
+{% endblock content %}

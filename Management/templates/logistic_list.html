@@ -1,0 +1,109 @@
+{% extends "base.html"%}
+{% block content %}
+{% load static %}
+
+         <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <h5 class="text-white h4">Jen Photo Masters</h5>
+                    <span class="text-muted">Online Management.</span>
+                </div>
+            </div>
+            <nav class="navbar navbar-light bg-light text-dark shadow p-3 mb-0 ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+         </div>
+<div class="row">
+ <!-- side navbar-->
+    <div class=" p-3 mb-5 bg-dark text-white " style="width: 20rem; height: 100rem;">
+        <div class="card-title">
+
+            <a href="{% url 'dashboard' %}">
+            <h4 align="center"><font color="white">Dashboard</font></h4>
+            </a>
+            <div class="card-body">
+                <h6><font color="white">Admin</font></h6>
+                <a href="/admin">
+                <h5><img src="{% static 'images/admin.png' %}" alt="+" width="30" height="30">
+                    <font color="grey">Admin database</font></h5>
+                </a>
+                <hr color="white">
+
+                <h6><font color="white">Main</font></h6>
+                <a href="/admin/Management/logistic/add/">
+                <h5><img src="{% static 'images/add-log.png' %}" alt="+" width="30" height="30">
+                    <font color="grey"> New Logistics</font></h5>
+                </a>
+                 <a href="/admin/Management/paymentaccount/add/">
+                <h5><img src="{% static 'images/add-bank.png' %}" alt="+" width="30" height="30">
+                    <font color="grey">PaymentAccount</font></h5>
+                </a>
+                <hr color="white">
+                <h6><font color="white">Manage Logistics</font></h6>
+                <a href="{% url 'logistic_list'%}">
+                    <h5><img src="{% static 'images/log.png' %}" alt="+" width="30" height="30">
+                        <font color="grey">Logistics</font></h5>
+                </a>
+
+
+                <hr color="white">
+                <h6><font color="white">Account</font></h6>
+
+                <a href="/admin/logout/">
+                <p><font color="grey">Logout</font></p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="col">
+
+            <div class="container mt-5">
+                <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Track ID</th>
+      <th scope="col">Sender</th>
+      <th scope="col">Recipient</th>
+      <th scope="col">Registered Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {%for logistics in logistics%}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{logistics.trackId}}</td>
+      <td>{{logistics.sender}}</td>
+      <td>{{logistics.recipient}}</td>
+      <td>{{logistics.date}}</td>
+         <td>
+             <a href="{% url 'logistic_details' logistics.trackId %}">
+                 <button type="button" class="btn btn-success">Details</button>
+              </a>
+         </td>
+         <td>
+             <a href="">
+                 <button type="button" class="btn btn-danger">Update location</button>
+              </a>
+         </td>
+    </tr>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+
+            </div>
+
+    </div>
+</div>
+
+{% endblock%}

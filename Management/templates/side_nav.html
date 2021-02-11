@@ -1,0 +1,48 @@
+
+{% load static %}
+<!-- side navbar-->
+    <div class="shadow-lg p-3 mb-5 bg-dark text-white " style="width: 15rem; height: 100rem;">
+        <div class="card-title">
+            <a href="{% url 'dashboard' %}">
+            <h4 align="center"><font color="white">Dashboard</font></h4>
+            </a>
+            <div class="card-body">
+                <h6><font color="gray">Admin</font></h6>
+                <a href="#">
+                <p><font color="grey">Admin dashboard</font></p>
+                </a>
+                <hr color="white">
+
+                <h6><font color="gray">Main</font></h6>
+                <a href="">
+                <p><font color="grey">Customers</font></p>
+                </a>
+                <hr color="white">
+                <h6><font color="gray">Apps</font></h6>
+                <a href="">
+                <p><font color="grey">Bookings</font></p>
+                </a>
+
+                <a href="">
+                <p><font color="grey">Services</font></p>
+                </a>
+
+                <a href="">
+                <p><font color="grey">Payments</font></p>
+                </a>
+
+                <a href="">
+                <p><font color="grey">Invoices</font></p>
+                </a>
+
+                <hr color="white">
+                <h6><font color="gray">Features</font></h6>
+
+                <a href="">
+                <p><font color="grey">Logout</font></p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+{% block nav %} {%endblock%}

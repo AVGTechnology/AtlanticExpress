@@ -1,0 +1,101 @@
+{% extends "base.html"%}
+{% block content %}
+{% load static %}
+
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Jen Photo Masters</h5>
+            <span class="text-muted">Online Management.</span>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light text-dark shadow p-3 mb-0 ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+</div>
+
+<div class="container mt-5 " align="center">
+
+    <div class="shadow-lg p-3 mb-5 bg-light text-dark " style="width: 40rem; height: 50rem;">
+        <div class="card-title">
+            <div class="ml-0 text-primary">
+                <img src="{% static 'images/logo2.png' %}" alt="Atlantic" width="80" height="50">
+                <b>Atlantic</b> Global Express <br><br>
+                <h4 class="text-dark" align="center">Track ID: {{logistic.trackId}}</h4>
+            </div>
+            <hr class="bg-dark">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col">
+                        <h5 class="text-secondary"> SENDER</h5>
+                        <h6><b>{{logistic.sender}}</b></h6>
+                        <h6>{{logistic.sender_email}}</h6>
+
+                    </div>
+
+                    <div class="col">
+                        <h5 class="text-secondary"> RECIPIENT </h5>
+                        <h6><b>{{logistic.recipient}}</b></h6>
+                        <h6>{{logistic.recipient_email}}</h6>
+                    </div>
+
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <h5 class="text-secondary"> ORIGIN</h5><br>
+                        <h6><b>{{logistic.origin}}</b></h6>
+                        <h6>www.atlanticglobalexpress.com</h6>
+
+                    </div>
+
+                    <div class="col"><h5 class="text-secondary"> DESTINATION </h5><br>
+                        <p><b>{{logistic.destination}}</b></p>
+                        <h6>{{logistic.recipient_contact}}</h6>
+                        <h6>{{logistic.recipient_email}}</h6>
+                    </div>
+
+                </div>
+
+                <hr class="bg-dark">
+                <div class="row mt-3">
+                    <div class="col">
+                        <b class="text-dark">MODE OF TRANSIT</b><br>
+                        <h6><b>{{logistic.mode}}</b></h6>
+
+                    </div>
+
+                    <div class="col"><b class="text-dark">PHYSICAL WEIGHT</b><br>
+                        <h6>{{logistic.weight}}</h6>
+                    </div>
+
+                </div>
+
+                <hr class="bg-dark">
+                <h6><b>Item Description </b><br>
+                    {{logistic.item_des}}</h6>
+                <h6> <b> Sender paid: {{logistic.Paid}}</b></h6>
+                <hr class="bg-dark">
+                <b class="text-dark">ISSUE DATE</b><br>
+                <h6>Date: {{logistic.date}}</h6>
+        <div class="mt-5">
+         <a href="{% url 'send_invoice' logistic.trackId %}">
+        <button type="button" class="btn btn-success">Send to Clients</button>
+       </a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

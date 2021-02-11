@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<!-- AVG Tech TAB nav -->
+<header>
+
+<nav class=" navbar-warning bg-warning h-100 " style="height: 20px;" >
+ <div align="center">
+    <ul class="nav nav-pills " >
+      <li><a class="nav-link nav-links" href="#" style="color: white;">
+        <img src="{% static 'images/mail.png' %}" width="20px" alt="..."> {{ info.email }}</a></li>
+      <li><a class="nav-link nav-links" href="#" style="color: white;">
+        <img src="{% static 'images/phone.png' %}" width="20px" alt="...">{{ info.contact }}</a></li>
+     </ul>
+   </div>
+</nav>
+
+
+  <!-- AVG Tech Image and text -->
+<nav class="navbar-light bg-light " style="height: 60px;">
+    <div class="ml-3">
+      <a class="navbar-brand head ml-3" href="{% url 'index' %}">
+        <img src="{% static 'images/logo2.png' %}" alt="Atlantic" width="100" height="50" >
+          <b class="text-primary">Atlantic</b><i class="text-primary"> Global Express</i>
+
+      </a>
+    </div>
+</nav>
+
+
+</header>
+
+
+
+<div class="container mt-5">
+
+    <div>
+        <h4>Track Atlantic Global Express Shipments</h4>
+        <p>Here’s the fastest way to check the status of your shipment. No need to call Customer Service – our online
+            results give you real-time, detailed progress as your shipment speeds through the Atlantic Global Express network</p>
+    </div>
+
+
+<table class="table table-borderless bg-light">
+
+
+  <tbody>
+    <tr>
+        <td>
+            <b>Waybill: {{ logistics.trackId }} </b> <br>
+
+          <b>Sender:<i class="text-primary"> {{ logistics.sender }} </i></b><br>
+          <b>Email:<i class="text-danger"> {{ logistics.sender_email}} </i> </b><br>
+            <b>Mode of Transit: {{ logistics.mode }}</b><br><br>
+        </td>
+        <td>
+          <b>{{ logistics.date }} at {{ logistics.timestap }} </b> <br>
+            <b> Origin Service Area: </b><br>
+            <h6><b class="text-danger"> ></b>{{ logistics.origin }} </h6>
+
+            <b>Destination Service Area:</b><br>
+            <h6><b class="text-danger"> ></b>{{ logistics.destination }}</h6>
+        </td>
+      <td>
+            <b>Estimated Delivery Date: </b> <br>
+            <b> {{ logistics.delivery_date }} </b><br>
+            <h6> By End of Day </h6>
+
+          <b>Recipient:<i class="text-primary"> {{ logistics.recipient }} </i></b><br>
+          <b>Email:<i class="text-danger"> {{ logistics.recipient_email}} </i> </b>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+    <div class="bg-warning"> <h5 class="container">
+        <b class="text-white">Item Description:</b> {{ logistics.item_des}}
+    </h5></div>
+
+
+   {% if location %}
+
+   <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Clearance Event</th>
+      <th scope="col">Location</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for location in location %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+       <!-- Events-->
+      <td>{{ location.point }}</td>
+        <!-- Location-->
+      <td>{{ location.Location }}</td>
+        <!-- Date-->
+      <td>{{ location.date|date:"D d M Y" }}</td>
+        <!-- Time-->
+      <td>{{ location.timestap }}</td>
+    </tr>
+    <tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+    <h4>No Location Update yet</h4>
+
+
+
+{% endif %}
+
+
+
+</div>
+
+{% endblock %}

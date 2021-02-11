@@ -1,0 +1,76 @@
+{% load static %}
+
+<div align="center" style=" align:center; font-family:Arial, Helvetica, sans-serif; font-size:12px; background-color:#ededed; width:100%;
+      height:100%;"><br>
+    <div style=" font-size:24px; color:#000000;">
+        <img src=" https://www.pngkey.com/png/full/26-266746_download-atlantic-aviation-logo.png " alt="Atlantic"
+             width="80" height="50">
+        <h5 align="center">Atlantic Global Express <br> Delivery Service </h5>
+    </div>
+    <img src=" https://uk.gophr.com/wp-content/uploads/2019/10/Gophr_Homepage_H1_Mobile_1920x2130.png " alt="Atlantic"
+         width="150" height="150">
+    <h4 style=" font-size:24px; color:#666666;">Visit <b>atlanticglobalexpress.com</b> To Track Item <br>
+        Copy Your Track ID: [ {{logistic.trackId}} ]</h4>
+
+    <h4 style=" font-size:24px; color:#01091a;">{{logistic.trackId}}</h4>
+    <hr>
+
+    <div>
+        <table cellspacing="20px" style=" font-size:20px; color:#01091a;">
+            <tr>
+                <td align="center">
+                    <h5> SENDER</h5>
+                    <h6><b>{{logistic.sender}}</b></h6>
+                    <h6>{{logistic.sender_email}}</h6>
+                </td>
+                <td align="center">
+                    <h5> RECIPIENT </h5>
+                    <h6><b>{{logistic.recipient}}</b></h6>
+                    <h6>{{logistic.recipient_email}}</h6>
+                </td>
+            </tr>
+        </table>
+
+        <hr>
+        <table cellspacing="20px" style=" font-size:20px; color:#01091a;">
+            <tr>
+                <td align="center">
+                    <h5> ORIGIN</h5>
+                    <h6>{{logistic.origin}}<br>
+                        www.atlanticglobalexpress.com</h6>
+                </td>
+                <td align="center">
+                    <h5> DESTINATION </h5>
+                    <h6>{{logistic.destination}}<br>
+                        {{logistic.recipient_contact}}<br>
+                        {{logistic.recipient_email}}</h6>
+                </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <hr>
+
+    <table cellspacing="20px" style=" font-size:20px; color:#01091a;">
+        <tr>
+            <td align="center">
+                <h5>MODE OF TRANSIT</h5>
+                <h6>{{logistic.mode}}</h6>
+            </td>
+            <td align="center">
+                <h5>PHYSICAL WEIGHT</h5>
+                <h6 style="color:#000000;">{{logistic.weight}}</h6>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+    <h6 style=" font-size:20px; color:#01091a;"><b>Item Description </b><br>
+        {{logistic.item_des}} <br>
+        Sender paid: {{logistic.Paid}}</h6>
+    <hr>
+    <b>ISSUE DATE: {{logistic.date}}</b><br>
+
+</div>
