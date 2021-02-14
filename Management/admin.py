@@ -13,10 +13,10 @@ admin.site.register(BillClient)
 @admin.register(Logistic)
 class LogisticAdmin(admin.ModelAdmin):
     def response_add(self, request, obj, post_url_continue=None):
-        return redirect('quick_invoice')
+        return redirect('invoices')
 
     def response_change(self, request, obj, post_url_continue=None):
-        return redirect('quick_invoice')
+        return redirect('invoices')
 
 
 admin.site.register(Location)
