@@ -60,8 +60,9 @@
         <h5>since 1992</h5>
         <h4>Digital Shipping Solution</h4>
         <p>At Atlantic global express we offer fast and easy traccking of logistics.</p>
-        <form  action="{% url 'track_id' %}" method="get">
-        <input class="form-control me-2" type="search" placeholder="Track ID" aria-label="Search">
+        <form action="{% url 'track_id' %}" method="get">
+        <input class="form-control me-2" type="search" placeholder="Track ID" name="trackId" value="{{ trackId }}"
+               aria-label="Search" id="track_id2">
           <br>
         <button class="btn btn-warning text-white" type="submit">Track Package Now</button>
       </form>
@@ -73,8 +74,9 @@
         <h5>since 1992</h5>
         <h4>Digital Shipping Solution</h4>
         <p>At Atlantic global express we offer fast and easy traccking of logistics.</p>
-        <form  action="{% url 'track_id' %}" method="get">
-        <input class="form-control me-2" type="search" placeholder="Track ID" aria-label="Search">
+        <form action="{% url 'track_id' %}" method="get">
+        <input class="form-control me-2" type="search" placeholder="Track ID" name="trackId" value="{{ trackId }}"
+               aria-label="Search" id="track_id3">
           <br>
         <button class="btn btn-warning text-white" type="submit">Track Package Now</button>
       </form>

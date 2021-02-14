@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/Management/templates/bill_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/Management/templates/bill_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Management/templates/invoices_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/Management/templates/invoices_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Management/templates/pdf/bill_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/Management/templates/pdf/bill_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Omoh_Shiping/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Omoh_Shiping/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
